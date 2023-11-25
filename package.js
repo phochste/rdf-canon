@@ -29,96 +29,60 @@ async function main(path) {
         )
     );
 
-    let c = 0;
+    let listNodes = [];
 
     for (const q of instore) {
-        c++;
-        let nextNode = blankNode();
 
         // Nested lists...
-        let t1 = blankNode() ;
-        let t2 = blankNode() ;
-        let t3 = blankNode() ;
+        let bn = blankNode() ;
 
-        outstore.add(
-            quad(
-                listNode,
-                namedNode(`${RDF}first`),
-                t1
-            )
-        )
+        addAsList(outstore,bn,[ q.subject, q.predicate, q.object ]);
 
-        outstore.add(
+        listNodes.push(bn);
+    }
+
+    addAsList(outstore,listNode,listNodes);
+
+    console.log(await rdfTransformStore(outstore,'text/turtle'));
+}
+
+function addAsList(store,subject,nodes) {
+    const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
+
+    let bn = subject;
+
+    for (let i = 0 ; i < nodes.length ; i++) {
+        let node = nodes[i];
+       
+        store.add(
             quad(
-               t1,
+               bn,
                namedNode(`${RDF}first`),
-               q.subject
+               node
             )
         );
 
-        outstore.add(
-            quad(
-               t1,
-               namedNode(`${RDF}rest`),
-               t2               
-            )
-        );
+        let bnext = blankNode();
 
-        outstore.add(
-            quad(
-               t2,
-               namedNode(`${RDF}first`),
-               q.predicate
-            )
-        );
-
-        outstore.add(
-            quad(
-               t2,
-               namedNode(`${RDF}rest`),
-               t3               
-            )
-        );
-
-        outstore.add(
-            quad(
-               t3,
-               namedNode(`${RDF}first`),
-               q.object
-            )
-        );
-
-        outstore.add(
-            quad(
-               t3,
-               namedNode(`${RDF}rest`),
-               namedNode(`${RDF}nil`)
-            )
-        );
-
-        // End nesting
-        
-        if (c == instore.size) {
-            outstore.add(
+        if (i < nodes.length - 1 ) {
+            store.add(
                 quad(
-                   listNode,
+                bn,
+                namedNode(`${RDF}rest`),
+                bnext               
+                )
+            );
+        }
+        else {
+            store.add(
+                quad(
+                   bn,
                    namedNode(`${RDF}rest`),
                    namedNode(`${RDF}nil`)
                 )
             );
         }
-        else {
-            outstore.add(
-                quad(
-                   listNode,
-                   namedNode(`${RDF}rest`),
-                   nextNode
-                )
-            );
-        }
 
-        listNode = nextNode;
+        bn = bnext;
     }
-
-    console.log(await rdfTransformStore(outstore,'text/turtle'));
 }
