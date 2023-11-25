@@ -83,7 +83,11 @@ or
 ) .
 ```
 
-Both lead to a different canonicalization result.
+Both lead to a different canonicalization result. This proves that canoncalization should be
+external to the packaging process, plus the result of the canonicalization needs to have 
+an agreement how to be written into rdflingua format (if further nested packaging is required).
+
+#### 3
 
 Should
 
