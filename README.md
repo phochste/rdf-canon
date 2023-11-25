@@ -46,9 +46,65 @@ node package.js examples/package/alice_ttl_package.ttl
 
 ### Notes
 
+#### 1
+
 To fix the c14n issue canonicalization needs to be part of packaging process itself. 
 
 But, canonicalization results in an _ordered_ list of NQuads. This ordering needs to be maintained through the packaging process. It can't be that the c14n NQuads are processed further in a 
 pipeline and result in a different order.
 
 This will make a toolchain ordering dependent, for which there are no guarantees.
+
+#### 2
+
+It is unclear how to package lists. E.g.
+
+```
+:Alice :counts (1 2).
+```
+
+Should this be packaged as:
+
+```
+:MyPackage :contains (
+    ( :Alice :counts (1 2) )
+) .
+```
+
+or
+
+```
+:MyPackage :contains (
+   ( :Alice :counts _:bn0 )
+   ( _:bn0 rdf:first 1 )
+   ( _:bn0 rdf:rest _:bn1 )
+   ( _:bn1 rdf:first 2 )
+   ( _:bn1 rdf:rest rdf:nil )
+) .
+```
+
+Both lead to a different canonicalization result.
+
+Should
+
+```
+:Alice :sends { :Alice :likes :Bob }.
+```
+
+be packaged as:
+
+```
+:MyPackage :contains (
+    ( :Alice :sends ( :Alice :likes :Bob ) )
+).
+```
+
+the longer first rest version.
+
+And. have the same package result as:
+
+```
+:Alice :sends ( :Alice :likes :Bob ).
+```
+
+If N3 GraphTerms are not supported in the to be packaged format, how can N3-Built-ins then be transported?
