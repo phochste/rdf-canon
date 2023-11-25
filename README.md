@@ -103,7 +103,7 @@ be packaged as:
 ).
 ```
 
-the longer first rest version.
+or the longer first rest version.
 
 And. have the same package result as:
 
