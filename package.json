@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "rdf-canonize": "^4.0.1"
+  }
+}
