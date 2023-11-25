@@ -105,10 +105,10 @@ be packaged as:
 
 or the longer first rest version.
 
-And. have the same package result as:
+Should the have the same package result as:
 
 ```
 :Alice :sends ( :Alice :likes :Bob ).
 ```
 
-If N3 GraphTerms are not supported in the to be packaged format, how can N3-Built-ins then be transported?
+If N3 GraphTerms are not supported in the packaged format, how can N3-Built-ins then be transported?
