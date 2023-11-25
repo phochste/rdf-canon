@@ -1,8 +1,5 @@
 const canonize = require('rdf-canonize');
-const stringifyStream = require('stream-to-string');
-const streamifyString = require('streamify-string');
-const rdfParser = require("rdf-parse").default;
-const rdfSerializer = require("rdf-serialize").default;
+const { rdfTransformString } = require('./util.js');
 const md5 = require('md5');
 const fs = require('fs');
 
@@ -32,17 +29,4 @@ async function main(path) {
 
     console.log(`# checksum`);
     console.log(md5(canonical));
-}
-
-async function rdfTransformString(data, fileName, outType) {
-    const inStream = streamifyString(data);
-
-    // Guess the content-type from the path name
-    const quadStream = rdfParser.parse(inStream, { 
-        path:fileName ,
-    });
-
-    const outStream = rdfSerializer.serialize(quadStream, { contentType: outType });
-
-    return await stringifyStream(outStream);
 }

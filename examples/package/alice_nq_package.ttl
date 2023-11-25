@@ -1,0 +1,26 @@
+<https://example.org/#MyPackage> <https://example.org/#contains> _:n3-0.
+_:n3-0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:n3-2;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-1.
+_:n3-2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/#Alice>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-3.
+_:n3-3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/#likes>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-4.
+_:n3-4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/#Bob>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
+_:n3-1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:n3-6;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-5.
+_:n3-6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/#Alice>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-7.
+_:n3-7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-8.
+_:n3-8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/#Person>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
+_:n3-5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:n3-10;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
+_:n3-10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/#Bob>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-11.
+_:n3-11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:n3-12.
+_:n3-12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://example.org/#Person>;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
+
