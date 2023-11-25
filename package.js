@@ -1,5 +1,4 @@
 const N3 = require('n3');
-const fs = require('fs');
 const { parseAsN3Store , rdfTransformStore } = require('./util.js');
 const { DataFactory } = N3;
 const { namedNode, blankNode, quad } = DataFactory;
@@ -17,7 +16,6 @@ async function main(path) {
     const instore = await parseAsN3Store(path);
     const outstore = new N3.Store();
     const EX = 'https://example.org/#';
-    const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 
     let listNode = blankNode();
 
