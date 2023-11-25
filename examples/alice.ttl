@@ -1,0 +1,5 @@
+@prefix : <https://example.org/#> .
+
+:Alice a :Person .
+:Bob a :Person .
+:Alice :likes :Bob .

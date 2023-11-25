@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "rdf-canonize": "^4.0.1"
+    "md5": "^2.3.0",
+    "rdf-canonize": "^4.0.1",
+    "rdf-parse": "^2.3.2",
+    "rdf-serialize": "^2.2.2",
+    "stream-to-string": "^1.2.1",
+    "streamify-string": "^1.0.1"
   }
 }
