@@ -21,7 +21,8 @@ async function main(path) {
 
     const canonical = await canonize.canonize(nquads, {
         algorithm: 'RDFC-1.0',
-        inputFormat: 'application/n-quads'
+        inputFormat: 'application/n-quads',
+        maxDeepIterations: 1000000 // Need to increase maxDeepIterations due to complexity of nested lists
     });
 
     console.log(`# output nquads`);
